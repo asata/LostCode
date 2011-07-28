@@ -112,7 +112,12 @@
 	// Run the intro Scene
 	//[[CCDirector sharedDirector] runWithScene: [HelloWorldLayer scene]];
     CCScene *scene = [CCScene node];
-    CCLayerMultiplex *layer = [CCLayerMultiplex layerWithLayers:[LoginLayer node], [MainLayer node], nil];
+    CCLayerMultiplex *layer = [CCLayerMultiplex layerWithLayers:[LoginLayer node], 
+                               [MainLayer node], 
+                               [TrainingLayer node], 
+                               [MemoryGameLayer node],
+                               [StateLayer node], 
+                               nil];
     [scene addChild:layer z:0];
     
     [[CCDirector sharedDirector] runWithScene:scene];

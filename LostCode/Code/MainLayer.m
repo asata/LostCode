@@ -10,11 +10,6 @@
 #import "Reachability.h"
 #import "Character.h"
 
-enum {
-    PrintLogin,
-    PrintMain
-};
-
 // 로그인 부분 출력
 @implementation LoginLayer
 
@@ -27,7 +22,8 @@ enum {
         // 저장시 로그인 처리 부분으로 이동하여 로그인
         
         // 없을 경우 로그인 화면 출력
-        [self printLogin];
+        [self printBackground];
+        [self printMenu];
     }
     
     return self;
@@ -37,13 +33,15 @@ enum {
     [super dealloc];
 }
 
-- (void) printLogin {
+- (void) printBackground {
     // 배경 출력
     CCSprite *bgSprite = [CCSprite spriteWithFile:@"login.jpg"];
     bgSprite.anchorPoint = CGPointZero;
     [bgSprite setPosition:ccp(0,0)];
     [self addChild:bgSprite];
-    
+}
+
+- (void) printMenu {
     // 회원 가입 버튼
     CCMenuItem *menu01 = [CCMenuItemImage itemFromNormalImage:@"join_button.jpg" 
                                                 selectedImage:@"join_button.jpg" 
@@ -54,16 +52,20 @@ enum {
                                                 selectedImage:@"login_button.jpg" 
                                                        target:self 
                                                      selector:@selector(loginCallBack:)];
+    
     CCMenu *menu = [CCMenu menuWithItems:menu01, menu02, nil];
     [menu setPosition:ccp(size.width / 2, 60)];
     [menu alignItemsHorizontallyWithPadding:30];
     [self addChild:menu];
 }
 
-- (void) joinCallBack: (id) sender {
+- (void) joinCallBack:(id)sender {
+    NSLog(@"회원가입");
 }
 
-- (void) loginCallBack: (id) sender { 
+- (void) loginCallBack:(id)sender { 
+    NSLog(@"로그인");
+    
     // 네트워크 연결이 되었는지 확인
     NetworkStatus netStatus = [[Reachability reachabilityForInternetConnection] currentReachabilityStatus];
     UIAlertView *alertView;
@@ -100,16 +102,16 @@ enum {
 - (id)init {
     if ((self = [super init])) {
         [self printBackground];
-        [self printMenu];    
+        [self printMenu];   
+        
     }
     
     return self;
 }
 
-- (void) onEnter {
+- (void) onEnterTransitionDidFinish {
     [self getCharacterInfo];
-    
-    [self printCharcher];
+    [self printCharcher]; 
 }
 
 - (void) dealloc {
@@ -132,46 +134,68 @@ enum {
     CCSprite *bgSprite = [CCSprite spriteWithFile:@"1311075143_bedroom.png"];
     bgSprite.anchorPoint = CGPointZero;
     [bgSprite setPosition:ccp(20,0)];
-    [self addChild:bgSprite]; 
+    [self addChild:bgSprite z:0]; 
 }
 
 - (void) printMenu {
     // 훈련
-    menu01 = [CCMenuItemImage itemFromNormalImage:@"menu01.jpg" 
-                                    selectedImage:@"menu01.jpg" 
-                                           target:self 
-                                         selector:nil];
+    CCMenuItem *trainingMenu = [CCMenuItemImage itemFromNormalImage:@"menu01.jpg"
+                                                      selectedImage:@"menu01.jpg"
+                                                             target:self
+                                                           selector:@selector(trainingCallBack:)];
     // 탐험
-    menu02 = [CCMenuItemImage itemFromNormalImage:@"menu02.jpg"
-                                    selectedImage:@"menu02.jpg" 
-                                           target:self 
-                                         selector:nil];
+    CCMenuItem *explorationMenu = [CCMenuItemImage itemFromNormalImage:@"menu02.jpg"
+                                                         selectedImage:@"menu02.jpg" 
+                                                                target:self 
+                                                              selector:@selector(explorationCallBack:)];
     // 대전
-    menu03 = [CCMenuItemImage itemFromNormalImage:@"menu03.jpg" 
-                                    selectedImage:@"menu03.jpg" 
-                                           target:self 
-                                         selector:nil];
+    CCMenuItem *warMenu = [CCMenuItemImage itemFromNormalImage:@"menu03.jpg" 
+                                                 selectedImage:@"menu03.jpg" 
+                                                        target:self 
+                                                      selector:@selector(warCallBack:)];
     // 상태
-    menu04 = [CCMenuItemImage itemFromNormalImage:@"menu04.jpg" 
-                                    selectedImage:@"menu04.jpg" 
-                                           target:self
-                                         selector:nil];
+    CCMenuItem *stateMenu = [CCMenuItemImage itemFromNormalImage:@"menu04.jpg" 
+                                                   selectedImage:@"menu04.jpg" 
+                                                          target:self
+                                                        selector:@selector(stateCallBack:)];
     // 인벤토리
-    menu05 = [CCMenuItemImage itemFromNormalImage:@"menu05.jpg" 
-                                    selectedImage:@"menu05.jpg"
-                                           target:self
-                                         selector:nil];
+    CCMenuItem *kitlistMenu = [CCMenuItemImage itemFromNormalImage:@"menu05.jpg"
+                                                     selectedImage:@"menu05.jpg"
+                                                            target:self
+                                                          selector:@selector(kitlistCallBack:)];
     
-    CCMenu *menu = [CCMenu menuWithItems:menu01, menu02, menu03, menu04, menu05, nil];
-    [menu setPosition:ccp(410, WIN_HEIGHT / 2)];
-    [menu alignItemsVertically];
-    [self addChild:menu];
+    CCMenu *mainMenu = [CCMenu menuWithItems:trainingMenu, explorationMenu, warMenu, stateMenu, kitlistMenu, nil];
+    [mainMenu setPosition:ccp(410, WIN_HEIGHT / 2)];
+    [mainMenu alignItemsVerticallyWithPadding:10.0f];
+    [self addChild:mainMenu z:1];
 }
 
 - (void) printCharcher {
     CCSprite *mon = [CCSprite spriteWithFile:character.char_img];
     mon.anchorPoint = CGPointZero;
     [mon setPosition:ccp(size.width / 2 - 140, size.height / 2 - 68)];
-    [self addChild:mon];
+    [self addChild:mon z:2];
+}
+
+- (void) trainingCallBack:(id)sender {
+    NSLog(@"훈련");
+    [(CCLayerMultiplex*)parent_ switchTo:PrintTraining];
+}
+
+- (void) explorationCallBack:(id)sender {
+    NSLog(@"탐험");
+}
+
+- (void) warCallBack:(id)sender {
+    NSLog(@"대전");
+}
+
+- (void) stateCallBack:(id)sender {
+    NSLog(@"정보");
+    [(CCLayerMultiplex*)parent_ switchTo:PrintState];
+}
+
+- (void) kitlistCallBack:(id)sender {
+    NSLog(@"인벤토리");
 }
 @end

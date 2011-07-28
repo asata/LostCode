@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CB4CAB9E13E0EC1100A26775 /* TrainingLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = CB4CAB9D13E0EC1100A26775 /* TrainingLayer.m */; };
+		CB4CABA113E0F44A00A26775 /* training_background1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = CB4CABA013E0F44A00A26775 /* training_background1.jpg */; };
+		CB4CABB313E15B6E00A26775 /* MemoryGameLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = CB4CABB213E15B6E00A26775 /* MemoryGameLayer.m */; };
+		CB8A1A0C13E04752000C9B05 /* StateLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = CB8A1A0B13E04752000C9B05 /* StateLayer.m */; };
+		CB8A1A1113E04857000C9B05 /* state.jpg in Resources */ = {isa = PBXBuildFile; fileRef = CB8A1A1013E04857000C9B05 /* state.jpg */; };
 		CB8AD88113DFC46900CD2711 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB8AD88013DFC46900CD2711 /* QuartzCore.framework */; };
 		CB8AD88313DFC46900CD2711 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB8AD88213DFC46900CD2711 /* OpenGLES.framework */; };
 		CB8AD88513DFC46900CD2711 /* OpenAL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB8AD88413DFC46900CD2711 /* OpenAL.framework */; };
@@ -139,6 +144,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		CB4CAB9D13E0EC1100A26775 /* TrainingLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TrainingLayer.m; path = Code/TrainingLayer.m; sourceTree = "<group>"; };
+		CB4CABA013E0F44A00A26775 /* training_background1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = training_background1.jpg; path = Resources/Background/training_background1.jpg; sourceTree = "<group>"; };
+		CB4CABA213E0FAAB00A26775 /* EnumList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EnumList.h; path = Code/EnumList.h; sourceTree = "<group>"; };
+		CB4CABB113E15B6E00A26775 /* MemoryGameLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MemoryGameLayer.h; path = Code/MiniGame/MemoryGameLayer.h; sourceTree = "<group>"; };
+		CB4CABB213E15B6E00A26775 /* MemoryGameLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MemoryGameLayer.m; path = Code/MiniGame/MemoryGameLayer.m; sourceTree = "<group>"; };
+		CB8A1A0B13E04752000C9B05 /* StateLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = StateLayer.m; path = Code/StateLayer.m; sourceTree = "<group>"; };
+		CB8A1A1013E04857000C9B05 /* state.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = state.jpg; path = Resources/Background/state.jpg; sourceTree = "<group>"; };
 		CB8AD87C13DFC46900CD2711 /* LostCode.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LostCode.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CB8AD88013DFC46900CD2711 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		CB8AD88213DFC46900CD2711 /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
@@ -413,6 +425,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		CB4CABA913E154FB00A26775 /* MiniGame */ = {
+			isa = PBXGroup;
+			children = (
+				CB4CABB113E15B6E00A26775 /* MemoryGameLayer.h */,
+				CB4CABB213E15B6E00A26775 /* MemoryGameLayer.m */,
+			);
+			name = MiniGame;
+			sourceTree = "<group>";
+		};
 		CB8AD87113DFC46900CD2711 = {
 			isa = PBXGroup;
 			children = (
@@ -796,9 +817,13 @@
 		CB8AD9F413DFC8EC00CD2711 /* Code */ = {
 			isa = PBXGroup;
 			children = (
+				CB4CABA913E154FB00A26775 /* MiniGame */,
 				CBBCBFE613E015BD0062F6EE /* Data */,
 				CB8ADA2E13DFCD6400CD2711 /* Comon */,
 				CB8AD9F513DFC91A00CD2711 /* MainLayer.h */,
+				CB4CABA213E0FAAB00A26775 /* EnumList.h */,
+				CB8A1A0B13E04752000C9B05 /* StateLayer.m */,
+				CB4CAB9D13E0EC1100A26775 /* TrainingLayer.m */,
 				CB8AD9F613DFC91A00CD2711 /* MainLayer.m */,
 			);
 			name = Code;
@@ -821,6 +846,8 @@
 		CB8ADA2913DFCBEA00CD2711 /* Background */ = {
 			isa = PBXGroup;
 			children = (
+				CB4CABA013E0F44A00A26775 /* training_background1.jpg */,
+				CB8A1A1013E04857000C9B05 /* state.jpg */,
 				CBBCBFE413E014210062F6EE /* 1311075143_bedroom.png */,
 				CB8ADA2C13DFCC1C00CD2711 /* login.jpg */,
 			);
@@ -921,6 +948,8 @@
 				CB8ADA2D13DFCC1C00CD2711 /* login.jpg in Resources */,
 				CBBCBFE513E014210062F6EE /* 1311075143_bedroom.png in Resources */,
 				CBBCBFEC13E016520062F6EE /* 1311075035_teddy_bear_toy_1.png in Resources */,
+				CB8A1A1113E04857000C9B05 /* state.jpg in Resources */,
+				CB4CABA113E0F44A00A26775 /* training_background1.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1032,6 +1061,9 @@
 				CBBCBFD513E00BF10062F6EE /* Bar.m in Sources */,
 				CBBCBFD613E00BF10062F6EE /* Reachability.m in Sources */,
 				CBBCBFE913E015CF0062F6EE /* Character.m in Sources */,
+				CB8A1A0C13E04752000C9B05 /* StateLayer.m in Sources */,
+				CB4CAB9E13E0EC1100A26775 /* TrainingLayer.m in Sources */,
+				CB4CABB313E15B6E00A26775 /* MemoryGameLayer.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
